@@ -23,7 +23,6 @@
               <th scope="col">Sl No</th>
               <th scope="col">Name</th>
               <th scope="col">Email</th>
-              <th scope="col">Phone</th>
               <th scope="col">Gender</th>
               <th scope="col">Admin</th>
               <th scope="col">Action</th>
@@ -35,12 +34,12 @@
               <th>{{ forloop.counter }}</th>
               <td>{{ row.name }}</td>
               <td>{{ row.email }}</td>
-              <td>{{ row.phone }}</td>
               <td>{{ row.gender }}</td>
-              <td><input type="checkbox" id="admin{{ row.id }}" {% if user.is_superuser %} checked {% endif %}></td>
+              <td><input url-data="{% url 'admin.user.makeadmin' %}" onchange="change_admin({{ row.id }})"
+                  type="checkbox" id="user{{ row.id }}" {% if row.is_superuser %} checked {% endif %}></td>
               <td>
                 <a href="{% url 'admin.genre.edit' id=row.id %}" class="badge badge-info">Favorites</a>
-                <a href="{% url 'admin.genre.delete' id=row.id %}" class="badge badge-dark">Details</a>
+                <a href="{% url 'admin.user.details' id=row.id %}" class="badge badge-dark">Details</a>
               </td>
             </tr>
             {% endfor %}

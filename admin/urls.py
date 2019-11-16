@@ -8,4 +8,5 @@ urlpatterns = [
     path('artists/', include('admin.artists.urls')),
     path('song/', include('admin.song.urls')),
     path('users/', include('admin.user.urls')),
+    path('favorites/', include('admin.favorite.urls')),
 ]

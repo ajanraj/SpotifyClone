@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'admin.dashboard',
     'admin.song',
     'admin.user',
+    'admin.favorite',
 ]
 
 AUTH_USER_MODEL = "user.CustomUser"

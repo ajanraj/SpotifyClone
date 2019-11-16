@@ -1,0 +1,102 @@
+{% extends "adminTemplates/layouts/layout-dashboard.html" %}
+{% block title %} Admin Dashboard | User Details {% endblock %}
+{% block main-section %}
+
+{% if messages %}
+<div class="alert alert-success" role="alert">
+    {% for msg in messages %}
+    <b>{{ msg }}</b>
+    <br>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="main-section">
+                <h2 class="content-heading">Detail User Info</h2>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="name">User Name</label>
+                                <input type="text" name="name" class="form-control" id="name" value="{{ data.name }}"
+                                    readonly>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="email">User Email</label>
+                                <input type="text" name="email" class="form-control" id="email" value="{{ data.email }}"
+                                    readonly>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="phonenumber">Phone Number</label>
+                                <input type="text" name="phonenumber" class="form-control" id="phonenumber"
+                                    value="{{ data.phone }}" readonly>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="gender">Gender</label>
+                                <input type="text" name="gender" class="form-control" id="gender"
+                                    value="{{ data.gender }}" readonly>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group text-left">
+                                <label for="is_superuser">Is Admin</label>
+                                <input type="text" name="is_superuser" class="form-control" id="is_superuser"
+                                    value="{% if data.is_superuser %} YES {% else %} NO {% endif %}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group text-left">
+                                <label for="is_active">Is Active</label>
+                                <input type="text" name="is_active" class="form-control" id="is_active"
+                                    value="{% if data.is_active %} YES {% else %} NO {% endif %}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group text-left">
+                                <label for="is_superuser">Is Admin</label>
+                                <input type="text" name="is_superuser" class="form-control" id="is_superuser"
+                                    value="{{ data.profile_pic }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" onclick="location.href = '{% url 'admin.song.edit' id=data.id %}'"
+                                class="btn btn-outline-success">Edit User</button>
+                            <button type="button" onclick="location.href = '{% url 'admin.user.index' %}'"
+                                class="btn btn-outline-dark">Dismiss</button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
