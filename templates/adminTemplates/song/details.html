@@ -1,0 +1,101 @@
+{% extends "adminTemplates/layouts/layout-dashboard.html" %}
+{% block title %} Admin Dashboard | Song Details {% endblock %}
+{% block main-section %}
+
+{% if messages %}
+<div class="alert alert-success" role="alert">
+    {% for msg in messages %}
+    <b>{{ msg }}</b>
+    <br>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="main-section">
+                <h2 class="content-heading">Detail Song Info</h2>
+                <form>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="name">Song Name</label>
+                                <input type="text" name="name" class="form-control" id="name"
+                                    value="{{ song.song_name }}" readonly>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="description">Song Description</label>
+                                <input type="text" name="description" class="form-control" id="description"
+                                    value="{{ song.song_des }}" readonly>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="length">Song Length</label>
+                                <input type="text" name="length" class="form-control" id="length"
+                                    value="{{ song.song_length }}" readonly>
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="genre">Song Genre</label>
+                                <input type="text" name="genre" class="form-control" id="genre"
+                                    value="{{ song.genre.genre_name }}" readonly>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group text-left">
+                                <label for="mood">Mood Name</label>
+                                <input type="text" name="mood" class="form-control" id="mood"
+                                    value="{{ song.mood.moods_name }}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group text-left">
+                                <label for="artist">Artist Name</label>
+                                <input type="text" name="artist" class="form-control" id="artist"
+                                    value="{{ song.artist.artists_name }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group text-left">
+                                <label for="path">File Path URL</label>
+                                <input type="text" name="path" class="form-control" id="path"
+                                    value="{{ song.song_file.url }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="button" onclick="location.href = '{% url 'admin.song.edit' id=song.id %}'"
+                                class="btn btn-outline-success">Edit Song</button>
+                            <button type="button" onclick="location.href = '{% url 'admin.song.index' %}'"
+                                class="btn btn-outline-dark">Dismiss</button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

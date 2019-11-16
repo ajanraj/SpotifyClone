@@ -1,0 +1,53 @@
+{% extends "adminTemplates/layouts/layout-dashboard.html" %}
+{% block title %} Admin Dashboard | User's List {% endblock %}
+{% block main-section %}
+
+{% if messages %}
+<div class="alert alert-success" role="alert">
+  {% for msg in messages %}
+  <b>{{ msg }}</b>
+  <br>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <div class="main-section">
+        <h2 class="content-heading">All Users</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Sl No</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Admin</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for row in data %}
+            <tr>
+              <th>{{ forloop.counter }}</th>
+              <td>{{ row.name }}</td>
+              <td>{{ row.email }}</td>
+              <td>{{ row.phone }}</td>
+              <td>{{ row.gender }}</td>
+              <td><input type="checkbox" id="admin{{ row.id }}" {% if user.is_superuser %} checked {% endif %}></td>
+              <td>
+                <a href="{% url 'admin.genre.edit' id=row.id %}" class="badge badge-info">Favorites</a>
+                <a href="{% url 'admin.genre.delete' id=row.id %}" class="badge badge-dark">Details</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

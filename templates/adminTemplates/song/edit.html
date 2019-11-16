@@ -1,0 +1,118 @@
+{% extends "adminTemplates/layouts/layout-dashboard.html" %}
+{% block title %} Admin Dashboard | Edit Song {% endblock %}
+{% block main-section %}
+
+{% if messages %}
+<div class="alert alert-success" role="alert">
+    {% for msg in messages %}
+    <b>{{ msg }}</b>
+    <br>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="main-section">
+                <h2 class="content-heading">Edit Song</h2>
+                <form action="{% url 'admin.song.update' id=song.id %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="name">Song Name</label>
+                                <input type="text" name="name" class="form-control" id="name"
+                                    value="{{song.song_name}}">
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="description">Song Description</label>
+                                <input type="text" name="description" class="form-control" id="description"
+                                    value="{{song.song_des}}">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="description">Song Length</label>
+                                <input type="text" name="length" class="form-control" id="length"
+                                    value="{{song.song_length}}">
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+
+                            <div class="form-group text-left">
+                                <label for="genre">Select Genre</label>
+                                <select class="form-control" id="genre" name="genre">
+                                    <option value="-1">--- Select Genre ---</option>
+                                    {% for row in genre %}
+                                    <option {% if row.id == song.genre_id %}selected{% endif %} value="{{ row.id }}">
+                                        {{ row.genre_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group text-left">
+                                <label for="mood">Select Mood</label>
+                                <select class="form-control" id="mood" name="mood">
+                                    <option value="-1">--- Select Mood ---</option>
+                                    {% for row in mood %}
+                                    <option {% if row.id == song.mood_id %}selected{% endif %} value="{{ row.id }}">
+                                        {{ row.moods_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group text-left">
+                                <label for="artist">Select Artist</label>
+                                <select class="form-control" id="artist" name="artist">
+                                    <option value="-1">--- Select Artist ---</option>
+                                    {% for row in artist %}
+                                    <option {% if row.id == song.artist_id %}selected{% endif %} value="{{ row.id }}">
+                                        {{ row.artists_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="text-left">
+                                <h6>Song File</h6>
+                                <div class="custom-file">
+                                    <input type="file" name="file" class="custom-file-input" id="song_file">
+                                    <label class="custom-file-label" for="song_file">Choose File...</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-right">
+                            <button type="submit" class="btn btn-outline-success">Update</button>
+                            <button type="button" onclick="location.href = '{% url 'admin.song.index' %}'"
+                                class="btn btn-outline-dark">Dismiss</button>
+                        </div>
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
