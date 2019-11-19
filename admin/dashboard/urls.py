@@ -1,5 +1,5 @@
 from django.urls import path, include
 from .import views
 urlpatterns = [
-    path('', views.index, name='dashboard.index'),
+    path('', views.index, name='admin.dashboard.index'),
 ]

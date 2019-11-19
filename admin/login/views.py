@@ -36,7 +36,7 @@ def login(request):
             if user.check_password(password):
                 auth_login(request, user)
                 messages.success(request, "Logged In")
-                return redirect('dashboard.index')
+                return redirect('admin.dashboard.index')
             else:
                 messages.error(request, "Invalid Password")
                 return redirect('admin.login')

@@ -1,5 +1,6 @@
-{% extends 'adminTemplates\layouts\layout-dashboard.html' %} {% block title %}
-Admin Dashboard |Home {% endblock title %} {% block main-section %}
+{% extends "adminTemplates/layouts/layout-dashboard.html" %}
+{% block title %} Admin Dashboard | Home {% endblock %}
+{% block main-section %}
 
 {% if messages %}
 <div class="alert alert-success" role="alert">
@@ -9,36 +10,65 @@ Admin Dashboard |Home {% endblock title %} {% block main-section %}
   {% endfor %}
 </div>
 {% endif %}
+{% load static %}
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <div class="main-section">
+        <h2 class="content-heading">Dashboard</h2>
+        <div class="container">
+          <div class="row">
 
-<div class="row">
-  <div class="col-12 text-center">
-    <div class="main-section">
-      <h2 class="content-heading">Song List</h2>
+            <div class="col-4" style="padding: 10px;">
 
-      <table class="table">
-        <thead class="thead-light">
-          <tr>
-            <th scope="col">SL No</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Despacito</td>
-            <td>This is a popular song of the Internet!</td>
-            <td>
-              <a href="#"><span class="badge badge-info">Edit</span></a>
-              &nbsp;&nbsp;
-              <a href="#"><span class="badge badge-danger">Delete</span></a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <a href="{% url 'admin.song.index' %}">
+
+                <div class=" songs-col">
+                  <img src='{% static "./adminAssets/images/card1.png" %}' class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text">Manage songs directly from here!</p>
+                  </div>
+                </div>
+
+              </a>
+
+            </div>
+            <div class="col-4" style="padding: 10px;">
+
+              <a href="{% url 'admin.homepage.index' %}">
+
+                <div class=" songs-col">
+                  <img src='{% static "./adminAssets/images/card2.png" %}' class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text">Manage Homepage directly from here!</p>
+                  </div>
+                </div>
+
+              </a>
+
+            </div>
+            <div class="col-4" style="padding: 10px;">
+
+              <a href="{% url 'admin.user.index' %}">
+
+                <div class=" songs-col">
+                  <img src='{% static "./adminAssets/images/card3.png" %}' class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <p class="card-text">Manage User-Favorites directly from here!</p>
+                  </div>
+                </div>
+
+              </a>
+
+
+            </div>
+
+          </div>
+        </div>
+
+
+      </div>
     </div>
   </div>
 </div>
-
-{% endblock main-section %}
+{% endblock %}

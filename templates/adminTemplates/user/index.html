@@ -38,7 +38,7 @@
               <td><input url-data="{% url 'admin.user.makeadmin' %}" onchange="change_admin({{ row.id }})"
                   type="checkbox" id="user{{ row.id }}" {% if row.is_superuser %} checked {% endif %}></td>
               <td>
-                <a href="{% url 'admin.genre.edit' id=row.id %}" class="badge badge-info">Favorites</a>
+                <a href="{% url 'admin.favorite.index-id' id=row.id %}" class="badge badge-info">Favorites</a>
                 <a href="{% url 'admin.user.details' id=row.id %}" class="badge badge-dark">Details</a>
               </td>
             </tr>

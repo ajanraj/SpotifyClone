@@ -6,4 +6,4 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='admin.login')
 def index(request):
-    return render(request, 'adminTemplates\dashboard\index.html')
+    return render(request, 'adminTemplates/dashboard/index.html')
