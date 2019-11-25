@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'admin.favorite',
     'admin.homepage',
     'frontend',
+    'frontend.account',
 ]
 
 AUTH_USER_MODEL = "user.CustomUser"

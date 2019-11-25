@@ -1,0 +1,63 @@
+{% extends "frontendTemplates/layouts/account/frame.html" %}
+
+{% block title %} Spotify Clone | Account Overview {% endblock %}
+
+{% block main-content %}
+
+{% load static %}
+
+<div class="col-9">
+    <div class="section-content">
+        <h3>Change Password</h3>
+
+
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert {% if msg.tags == 'error' %} alert-danger {% elif msg.tags == 'success' %} alert-success {% endif %}"
+            role="alert" style="border-radius: 0;">
+            <b>{{ msg }}</b>
+            <br>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+        <form method="POST" action="{% url 'frontend.account.update.pass' %}" id="editForm" class="form-account form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="cpass">Current Password</label>
+                <div class="form-input-bg">
+                    <input type="password" name="cpass" class="form-control" id="cpass"
+                        placeholder="Enter current password">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="npass">New Password</label>
+                <div class="form-input-bg">
+                    <input type="password" name="npass" class="form-control" id="npass"
+                        placeholder="Enter a new password">
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="conpass">Confirm Password</label>
+                <div class="form-input-bg">
+                    <input type="password" name="conpass" class="form-control" id="conpass"
+                        placeholder="Confirm password">
+                </div>
+            </div>
+
+
+
+            <div class="text-right">
+                <button type="submit" class="button">Update Password</button>
+                <button type="button" onclick="location.href = '{% url 'frontend.account.index' %}'"
+                    class="button">Dismiss</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

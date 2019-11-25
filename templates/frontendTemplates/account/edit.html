@@ -1,0 +1,68 @@
+{% extends "frontendTemplates/layouts/account/frame.html" %}
+
+{% block title %} Spotify Clone | Account Edit {% endblock %}
+
+{% block main-content %}
+
+{% load static %}
+
+<div class="col-9">
+    <div class="section-content">
+        <h3>Edit Profile</h3>
+
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert {% if msg.tags == 'error' %} alert-danger {% elif msg.tags == 'success' %} alert-success {% endif %}"
+            role="alert" style="border-radius: 0;">
+            <b>{{ msg }}</b>
+            <br>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+
+
+        <form action="{% url 'frontend.account.update' %}" method="POST" id="editForm" class="form-account form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <div class="form-input-bg">
+                    <input type="text" name="name" class="form-control" id="name" value="{{ user.name }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="form-input-bg">
+                    <input type="email" name="email" class="form-control" id="email" value="{{ user.email }}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <div class="form-input-bg">
+                    <select id="gender" class="form-control" name="gender">
+                        <option value="Male" {% if user.gender == 'Male' %} selected {% endif %}>Male</option>
+                        <option value="Female" {% if user.gender == 'Female' %} selected {% endif %}>Female</option>
+                        <option value="Not Listed" {% if user.gender == 'Not Listed' %} selected {% endif %}>Not Listed
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <div class="form-input-bg">
+                    <input type="text" class="form-control" name="mobile" id="mobile" value="{{ user.phone }}">
+                </div>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="button">Update</button>
+                <button type="button" onclick="location.href = '{% url 'frontend.account.index' %}'"
+                    class="button">Dismiss</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

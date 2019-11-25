@@ -1,0 +1,56 @@
+{% extends 'frontendTemplates/layouts/account/frame.html' %}
+{% load static %}
+{% block title %}
+Spotify | Account Overview
+{% endblock title %}
+{% block main-content %}
+{% load static %}
+<div class="col-9">
+    <div class="section-content">
+        <h3>Profile Overview</h3>
+        {% if messages %}
+        <div class="alert alert-danger" role="alert" style="border-radius: 0;">
+            {% for msg in messages %}
+            <b>{{ msg }}</b>
+            <br>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <form id="editForm" class="form-account form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <div class="form-input-bg">
+                    <input type="email" class="form-control" id="name" value="{{ user.name }}" readonly>
+                </div>
+            </div>
+
+            <div class=" form-group">
+                <label for="email">Email</label>
+                <div class="form-input-bg">
+                    <input type="email" class="form-control" id="email" value="{{ user.email }}" readonly>
+
+                </div>
+            </div>
+
+            <div class=" form-group">
+                <label for="gender">Gender</label>
+                <div class="form-input-bg">
+                    <input type="gender" class="form-control" id="gender" value="{{ user.gender }}" readonly>
+                </div>
+            </div>
+
+            <div class=" form-group">
+                <label for="mobile">Mobile</label>
+                <div class="form-input-bg">
+                    <input type="text" class="form-control" id="mobile" value="{{ user.phone }}" readonly>
+                </div>
+            </div>
+            <div class=" text-right">
+                <button type="button" onclick="location.href = '{% url 'frontend.account.edit' %}' " class="button">Edit
+                    Profile</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock main-content %}

@@ -30,17 +30,18 @@
         <div class="row">
             <div class="col-4 m-auto text-center">
                 <p style="color: black; padding: 20px;"><strong>Sign up with your email address</strong></p>
-
                 {% if messages %}
-                <div class="alert alert-danger" role="alert" style="border-radius: 0;">
-                    {% for msg in messages %}
+                {% for msg in messages %}
+                <div class="alert {% if msg.tags == 'error' %} alert-danger {% elif msg.tags == 'success' %} alert-success {% endif %}"
+                    role="alert" style="border-radius: 0;">
                     <b>{{ msg }}</b>
                     <br>
-                    {% endfor %}
                 </div>
+                {% endfor %}
                 {% endif %}
 
-                <form action="#" method="post" id="signup-form">
+                <form action="{% url 'frontend.signup' %}" method="post" id="signup-form">
+                    {% csrf_token %}
 
                     <div class="form-group">
                         <div class="form-input-bg">
@@ -64,7 +65,7 @@
 
                     <div class="form-group">
                         <div class="form-input-bg">
-                            <input type="number" name="number" class="form-control" id="inputNumber44"
+                            <input type="tel" name="number" class="form-control" id="inputNumber44"
                                 placeholder="Number">
                         </div>
                     </div>
@@ -73,7 +74,7 @@
                         <label for="gender" style="color: black;">Gender</label>
                         <div class="form-input-bg">
                             <select id="gender" class="form-control" name="gender">
-                                <option>-- Select --</option>
+                                <option value="-1">-- Select --</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Not Listed">Not Listed</option>
@@ -92,7 +93,8 @@
                     </div>
 
                     <div>
-                        <p style="color: black;">Already have an account ? <a href="#"><span style="color: green;">Log
+                        <p style="color: black;">Already have an account ? <a href="{% url 'frontend.login' %}"><span
+                                    style="color: green;">Log
                                     In</span></a></p>
                     </div>
 
