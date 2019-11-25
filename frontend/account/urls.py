@@ -7,5 +7,7 @@ urlpatterns = [
     path('update/password', views.update_pass,
          name='frontend.account.update.pass'),
     path('edit/password/', views.edit_pass, name='frontend.account.edit.pass'),
+    path('update/profile-pic', views.change_profile_pic,
+         name='frontend.account.pic.upload'),
 
 ]

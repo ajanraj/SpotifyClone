@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model, logout, login as auth_login
 from admin.user.models import CustomUser
 import re
+import json
 
 
 @login_required(login_url='frontend.login')
@@ -94,7 +95,6 @@ def update(request):
 
 @login_required(login_url='frontend.login')
 def edit_pass(request):
-
     user = CustomUser.objects.filter(pk=request.user.id)
 
     if not user:
@@ -155,3 +155,39 @@ def update_pass(request):
         except UserModel.DoesNotExist:
             messages.error(request, "Login First")
             return redirect("frontend.login")
+
+
+@login_required(login_url='frontend.login')
+def change_profile_pic(request):
+    if request.is_ajax():
+        if 'file' in request.FILES.keys():
+
+            if not request.FILES['file'].name.split('.')[-1] in ['jpg', 'png', 'jpeg']:
+
+                return HttpResponse(json.dumps({'key': '0', 'msg': 'Invalid File Type!'}))
+
+            user = CustomUser.objects.filter(pk=request.user.id)
+
+            if not user:
+                messages.error(request, 'Log In First!')
+                return redirect('home-login')
+            else:
+                user = user.get()
+
+            if "team.jpg" in str(user.profile_pic):
+
+                user.profile_pic = request.FILES['file']
+
+                user.save()
+
+            else:
+                user.profile_pic.delete()
+
+                user.profile_pic = request.FILES['file']
+
+                user.save()
+
+            return HttpResponse(json.dumps({'key': '1', 'msg': 'Success!'}))
+
+        else:
+            return HttpResponse(json.dumps({'key': '0', 'msg': 'No File Selected!'}))
