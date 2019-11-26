@@ -308,7 +308,7 @@ $(document).ready(function() {
       });
 
       $.ajax({
-        url: "./update/profile-pic",
+        url: "/account/update/profile-pic",
         type: "POST",
         data: formData,
         processData: false,

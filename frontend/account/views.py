@@ -191,3 +191,27 @@ def change_profile_pic(request):
 
         else:
             return HttpResponse(json.dumps({'key': '0', 'msg': 'No File Selected!'}))
+
+
+@login_required(login_url='frontend.index')
+def privacy(request):
+    usr = CustomUser.objects.filter(pk=request.user.id)
+
+    if not usr:
+        messages.error(request, 'Log In First!')
+        return redirect('frontend.index')
+    else:
+        usr = usr.get()
+    return render(request, 'frontendTemplates/account/privacy.html', {'usr': usr})
+
+
+@login_required(login_url='frontend.index')
+def subscription(request):
+    usr = CustomUser.objects.filter(pk=request.user.id)
+
+    if not usr:
+        messages.error(request, 'Log In First!')
+        return redirect('frontend.index')
+    else:
+        usr = usr.get()
+    return render(request, 'frontendTemplates/account/subscription.html', {'usr': usr})

@@ -38,7 +38,15 @@
                 </a>
             </li>
             <li class="section-menu-nav-item">
-                <a href="#" class="d-block section-menu-nav-link">
+                <a href="{% url 'frontend.subscription' %}" class="d-block section-menu-nav-link">
+                    <span>
+                        <i class="far fa-credit-card"></i>
+                    </span>
+                    Subscription
+                </a>
+            </li>
+            <li class="section-menu-nav-item">
+                <a href="{% url 'frontend.privacy' %}" class="d-block section-menu-nav-link">
                     <span>
                         <i class="fas fa-user-lock"></i>
                     </span>

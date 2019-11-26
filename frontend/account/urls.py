@@ -9,5 +9,7 @@ urlpatterns = [
     path('edit/password/', views.edit_pass, name='frontend.account.edit.pass'),
     path('update/profile-pic', views.change_profile_pic,
          name='frontend.account.pic.upload'),
+    path('privacy', views.privacy, name='frontend.privacy'),
+    path('subscription', views.subscription, name='frontend.subscription'),
 
 ]

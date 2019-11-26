@@ -1,20 +1,20 @@
-<header id="header-index" class="header">
-    <nav class="navbar navbar-expand">
+<header id="header-account" class="header">
+    <nav class="navbar navbar-expand bg-black">
         <div class="container">
-            <a class="navbar-brand" href="#">Spotify</a>
+            <a class="navbar-brand" href="{% url 'frontend.index' %}">Spotify</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Premium</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" href="#">Premium</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Help</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" href="#">Help</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Download</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" href="#">Download</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Upgrade</a>
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter" href="#">Upgrade</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
