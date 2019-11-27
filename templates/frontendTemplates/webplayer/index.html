@@ -1,0 +1,48 @@
+{% extends 'frontendTemplates/layouts/webplayer/frame.html' %}
+{% load static %}
+{% block title %}
+Spotify | WebPlayer
+{% endblock title %}
+
+{% block main-content %}
+{% load static %}
+<section id="section-main">
+    <div class="filterNav">
+        <a href="#" class="filterNav-link active">Featured</a>
+        <a href="#" class="filterNav-link">Categories</a>
+        <a href="#" class="filterNav-link">Genre</a>
+        <a href="#" class="filterNav-link">Mood</a>
+        <a href="#" class="filterNav-link">Artist</a>
+        <a href="#" class="filterNav-link">Favorites</a>
+    </div>
+    <div class="music">
+        <div class="music-page">
+            <div class="music-head">
+                <div class="music-head-item">
+                    <h1>New Releases</h1>
+                </div>
+            </div>
+            <div class="music-row">
+
+                {% for row in data %}
+
+                <a href="#" class="music-col">
+                    <div class="music-img">
+                        {% static './images/home.jpg' as baseUrl %}
+                        <img src="{{ baseUrl|cut:'.jpg' }}{{ forloop.counter }}.jpg " alt="">
+                        <button class="music-playBtn">
+                            <img src="{% static './images/play.jpg' %}" alt="play">
+                        </button>
+                    </div>
+                    <h3>{{ row.title }}</h3>
+                    <h5>{{ row.song.artist.artists_name }}</h5>
+                </a>
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock main-content %}

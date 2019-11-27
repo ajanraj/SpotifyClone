@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'social_django',
     'admin',
     'admin.login',
     'admin.genre',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'admin.homepage',
     'frontend',
     'frontend.account',
+    'frontend.webplayer',
 ]
 
 AUTH_USER_MODEL = "user.CustomUser"
@@ -60,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'SpotifyClone.urls'
@@ -75,6 +78,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'social_django.context_processors.backends',
+                # 'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -111,6 +116,23 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# AUTHENTICATION_BACKENDS = (
+#     'social_core.backends.google.GoogleOAuth2',
+#     'django.contrib.auth.backends.ModelBackend',
+#     'social_core.backends.facebook.FacebookOAuth2',
+# )
+
+
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '87524978128-4o32u16cbiptdk6s3civafag29e7v49a.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'G71RDfFW96lfAPvYNxsBWV_eI'
+
+
+# LOGIN_URL = 'frontend.login'
+# LOGIN_REDIRECT_URL = 'frontend.index'
+# LOGOUT_REDIRECT_URL = 'frontend.index'
+# LOGOUT_URL = 'frontend.logout'
+# SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
 # Internationalization
