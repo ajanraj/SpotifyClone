@@ -1,0 +1,54 @@
+{% extends "frontendTemplates/layouts/webplayer/frame.html" %}
+
+{% block title %} Spotify Clone | Webplayer {% endblock %}
+
+{% block main-content %}
+
+
+<section id="section-main">
+    <div class="filterNav">
+        <a href="{% url 'player-index-id' sid=song.id %}" class="filterNav-link">Featured</a>
+        <a href="#" class="filterNav-link">Categories</a>
+        <a href="{% url 'player-genre' sid=song.id %}" class="filterNav-link active">Genre</a>
+        <a href="#" class="filterNav-link">Mood</a>
+        <a href="#" class="filterNav-link">Artist</a>
+        <a href="{% url 'player-favorites' sid=song.id %}" class="filterNav-link">Favorites</a>
+    </div>
+    <div class="music">
+        <div class="music-page">
+            <div class="music-head">
+                <div class="music-head-item">
+                    {% if not genre %}
+                    <h1>No such Genre! Showing All Songs!</h1>
+                    {% else %}
+                    <h1>{{ genre.genre_name }} Genre Songs</h1>
+                    {% endif %}
+                </div>
+            </div>
+            {% load static %}
+            <div class="music-row">
+                {% if genre_songs|length == 0 %}
+                <p>No Songs Found!</p>
+                {% else %}
+                {% for row in genre_songs %}
+                <a href='{% url "player-genre-details" sid=row.id gid=row.genre.id %}' class="music-col">
+                    <div class="music-img">
+                        {% static "./images/home.jpg" as baseURL %}
+                        <img src='{{ baseURL|cut:".jpg" }}{{ forloop.counter }}.jpg' alt="night" class="img-fluid">
+                        <button class="music-playBtn">
+                            <img src='{% static "./images/play.svg" %}' alt="play">
+                        </button>
+                    </div>
+                    <h3>{{ row.song_name }}</h3>
+                    <h5>{{ row.artist_name.artist_name }}</h5>
+                </a>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

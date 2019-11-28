@@ -231,9 +231,72 @@ $(document).ready(function() {
 
       // others
       $("#addToFav").click(function() {
-        $(this).toggleClass("inFav");
+        var sid = $("#addToFav").attr("song-id");
+
+        var csrftoken = getCookie("csrftoken");
+
+        var url = $(this).attr("fav-url");
+
+        var formData = new FormData();
+
+        $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+          }
+        });
+
+        if (!$(this).hasClass("inFav")) {
+          formData.append("action", "1");
+          formData.append("sid", sid);
+
+          $.ajax({
+            url: url,
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function(data) {
+              data = JSON.parse(data);
+
+              if (data["key"] == "0") {
+                alert(data["msg"]);
+              } else {
+                $("#addToFav").toggleClass("inFav");
+              }
+            }
+          });
+        } else {
+          formData.append("action", "2");
+          formData.append("sid", sid);
+
+          $.ajax({
+            url: url,
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: formData,
+            success: function(data) {
+              data = JSON.parse(data);
+
+              if (data["key"] == "0") {
+                alert(data["msg"]);
+              } else {
+                $("#addToFav").toggleClass("inFav");
+              }
+            }
+          });
+        }
       });
     })();
+  }
+  function isUniqueId() {
+    $("[id]").each(function() {
+      var ids = $('[id="' + this.id + '"]');
+      if (ids.length > 1 && ids[0] == this)
+        console.warn("Multiple IDs #" + this.id);
+    });
   }
   function isUniqueId() {
     $("[id]").each(function() {
