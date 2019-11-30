@@ -18,20 +18,16 @@
         <div class="music-page">
             <div class="music-head">
                 <div class="music-head-item">
-                    {% if not genre %}
-                    <h1>No such Genre! Showing All Songs!</h1>
-                    {% else %}
-                    <h1>{{ genre.genre_name }} Genre Songs</h1>
-                    {% endif %}
+                    <h1>All Moods</h1>
                 </div>
             </div>
             {% load static %}
             <div class="music-row">
-                {% if genre_songs|length == 0 %}
-                <p>No Songs Found!</p>
+                {% if not mood %}
+                <h6>No moods found!</h6>
                 {% else %}
-                {% for row in genre_songs %}
-                <a href='{% url "player-genre-details" sid=row.id gid=row.genre.id %}' class="music-col">
+                {% for row in mood %}
+                <a href='{% url "player-mood-details" sid=song.id mid=row.id %}' class="music-col">
                     <div class="music-img">
                         {% static "./images/home.jpg" as baseURL %}
                         <img src='{{ baseURL|cut:".jpg" }}{{ forloop.counter }}.jpg' alt="night" class="img-fluid">
@@ -39,8 +35,7 @@
                             <img src='{% static "./images/play.svg" %}' alt="play">
                         </button>
                     </div>
-                    <h3>{{ row.song_name }}</h3>
-                    <h5>{{ row.artist.artists_name }}</h5>
+                    <h3>{{ row.moods_name }}</h3>
                 </a>
                 {% endfor %}
                 {% endif %}

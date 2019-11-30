@@ -9,13 +9,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="./search.html" class="nav-link">
+                <a href="{% url 'player-search' sid=song.id %}" class="nav-link">
                     <i class="fas fa-search"></i>
                     Search
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{% url 'player-library' sid=song.id %}" class="nav-link">
                     <i class="fas fa-align-right"></i>
                     Library
                 </a>
@@ -24,10 +24,10 @@
     </nav>
     <div class="plNames-main">
         <p>Playlist</p>
-        <button type="button" id="createPL">
+        <a href="{% url 'player-favorites' sid=song.id %}" id="createPL">
             <i class="fas fa-plus-circle"></i>
-            Create Favorites
-        </button>
+            Favorites
+        </a>
     </div>
     <a href="{% url 'frontend.account.index' %}" class="userName">
         <i class="far fa-user"></i>

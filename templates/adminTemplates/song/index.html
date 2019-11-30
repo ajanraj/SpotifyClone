@@ -18,42 +18,43 @@ Admin Dashboard | Song Index
         <div class="col-12 text-center">
             <div class="main-section">
                 <h2 class="content-heading">All Songs</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">SL No</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Length</th>
-                            <th scope="col">Artist</th>
-                            <th scope="col">Genre</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% load static %}
-                        {% for row in data %}
-                        <tr>
-                            <th>{{ forloop.counter }}</th>
-                            <td>{{row.song_name}} <img id="speaker-anim-{{ forloop.counter }}" class="hide-gif"
-                                    src="{% static './adminAssets/images/speaker.gif' %}" alt=""> </td>
-                            <td>{{row.song_length}}</td>
-                            <td>{{row.artist.artists_name}}</td>
-                            <td>{{row.genre.genre_name}}</td>
-                            <td>
-                                <a href="#" id="span{{ forloop.counter }}" onclick="playmusic({{ forloop.counter }});"
-                                    class="badge badge-success">Play</a>
-                                <audio onended="endAudio()" id="audio{{ forloop.counter }}"
-                                    src="{{ row.song_file.url }}"></audio>
-                                <a href="{% url 'admin.song.edit' id=row.id %}" class="badge badge-info">Edit</a>
-                                <a href="{% url 'admin.song.delete' id=row.id %}" class="badge badge-danger"
-                                    onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-                                <a href="{% url 'admin.song.details' id=row.id %}" class="badge badge-dark">More</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">SL No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Length</th>
+                                <th scope="col">Artist</th>
+                                <th scope="col">Genre</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% load static %}
+                            {% for row in data %}
+                            <tr>
+                                <th>{{ forloop.counter }}</th>
+                                <td>{{row.song_name}} <img id="speaker-anim-{{ forloop.counter }}" class="hide-gif"
+                                        src="{% static './adminAssets/images/speaker.gif' %}" alt=""> </td>
+                                <td>{{row.song_length}}</td>
+                                <td>{{row.artist.artists_name}}</td>
+                                <td>{{row.genre.genre_name}}</td>
+                                <td>
+                                    <a href="#" id="span{{ forloop.counter }}"
+                                        onclick="playmusic({{ forloop.counter }});" class="badge badge-success">Play</a>
+                                    <audio onended="endAudio()" id="audio{{ forloop.counter }}"
+                                        src="{{ row.song_file.url }}"></audio>
+                                    <a href="{% url 'admin.song.edit' id=row.id %}" class="badge badge-info">Edit</a>
+                                    <a href="{% url 'admin.song.delete' id=row.id %}" class="badge badge-danger"
+                                        onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                    <a href="{% url 'admin.song.details' id=row.id %}" class="badge badge-dark">More</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>

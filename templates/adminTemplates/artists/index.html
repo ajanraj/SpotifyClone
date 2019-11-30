@@ -18,31 +18,32 @@ Admin Dashboard | Artists List
         <div class="col-12 text-center">
             <div class="main-section">
                 <h2 class="content-heading">All Artists</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">SL No</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in data %}
-                        <tr>
-                            <th>{{ forloop.counter }}</th>
-                            <td>{{row.artists_name}}</td>
-                            <td>{{row.artists_des}}</td>
-                            <td>
-                                <a href="{% url 'admin.artists.edit' id=row.id %}" class="badge badge-info">Edit</a>
-                                <a href="{% url 'admin.artists.delete' id=row.id %}" class="badge badge-danger"
-                                    onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">SL No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in data %}
+                            <tr>
+                                <th>{{ forloop.counter }}</th>
+                                <td>{{row.artists_name}}</td>
+                                <td>{{row.artists_des}}</td>
+                                <td>
+                                    <a href="{% url 'admin.artists.edit' id=row.id %}" class="badge badge-info">Edit</a>
+                                    <a href="{% url 'admin.artists.delete' id=row.id %}" class="badge badge-danger"
+                                        onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
 
             </div>
         </div>
