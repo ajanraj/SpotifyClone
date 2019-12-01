@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'frontend.webplayer',
     'rest_framework',
     'api',
+    'storages',
 ]
 
 AUTH_USER_MODEL = "user.CustomUser"
@@ -170,16 +171,22 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Dropbox
 # DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
-# DROPBOX_OAUTH2_TOKEN = 'qXvZghDFC7AAAAAAAAAAR-tIGgdpbuLl3QhCNXYOwTXYj4rhUNS__sK6T1qC77qs'
+# DROPBOX_OAUTH2_TOKEN = 'Your Own Token here'
 # DROPBOX_TIMEOUT = 'None'
 
-# AWS
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = 'AKIAXUJSKVHNFVUZ4PHE'
-AWS_SECRET_ACCESS_KEY = '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'
+
+# AWS Configuration
+
+AWS_ACCESS_KEY_ID = 'AKIAXUJSKVHNL3ILZU4U'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'django-ajanraj'
+
+AWS_S3_FILE_OVERWRITE = False
+
 AWS_DEFAULT_ACL = None
-AWS_S3_FILE_OVERWRITE = 'False'
-AWS_S3_REGION_NAME = 'us-east-2'
+
 AWS_S3_SIGNATURE_VERSION = 's3v4'
+
+AWS_S3_REGION_NAME = 'us-east-2'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
