@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
+# import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(
@@ -28,7 +28,7 @@ SECRET_KEY = 'hzvuy3m(@r&$*4*h^7bv423^($ra=2zqkqz2m1s_96ef98b-+1'
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'https://spotifyclonedjango.herokuapp.com/',
-                 'www.spotifyclonedjango.herokuapp.com/']
+                 'www.spotifyclonedjango.herokuapp.com/', 'www.ajanraj.pythonanywhere.com', 'https://ajanraj.pythonanywhere.com']
 
 
 # Application definition
@@ -196,4 +196,4 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Heroku
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
