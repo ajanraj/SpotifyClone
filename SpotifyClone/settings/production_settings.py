@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 SECRET_KEY = 'hzvuy3m(@r&$*4*h^7bv423^($ra=2zqkqz2m1s_96ef98b-+1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'https://spotifyclonedjango.herokuapp.com/',
                  'www.spotifyclonedjango.herokuapp.com/']
