@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(
 SECRET_KEY = 'hzvuy3m(@r&$*4*h^7bv423^($ra=2zqkqz2m1s_96ef98b-+1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -158,7 +158,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = ''
+STATIC_ROOT = '/static/'
 
 STATICFILES_DIRS = [
 
@@ -190,3 +190,5 @@ AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_S3_REGION_NAME = 'us-east-2'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
