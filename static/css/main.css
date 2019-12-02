@@ -168,7 +168,7 @@ select {
 
 /*||  ----  Custom Classes Ends  ----  ||*/
 #root {
-  position: fixed;
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -188,7 +188,7 @@ select {
   max-width: 260px;
   position: relative;
   min-height: 100%;
-  min-width: 220px;
+  min-width: 210px;
   flex: 0 0 auto;
   overflow-y: auto;
   display: flex;

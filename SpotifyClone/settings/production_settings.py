@@ -181,7 +181,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # AWS_ACCESS_KEY_ID = ''
 # AWS_SECRET_ACCESS_KEY = ''
-# AWS_STORAGE_BUCKET_NAME = 'django-ajanraj'
+# AWS_STORAGE_BUCKET_NAME = ''
 
 # AWS_S3_FILE_OVERWRITE = False
 
